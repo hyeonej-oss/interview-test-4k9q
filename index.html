@@ -20,6 +20,7 @@
   --fg-black: #000000;
   --fg-price: #313335;
   --fg-label: #222222;
+  --fg-benefit: #FF8400;          /* Figma Light/fg_benefit */
   --fg-sale: #FF403E;             
   --fg-favorite: #FF403E;         
   --fg-secondary-alpha: rgba(24, 26, 28, 0.78); 
@@ -430,6 +431,7 @@ img { display: block; }
 .c2-opts { display: flex; flex-direction: column; gap: var(--sp-25); }
 .c2-opt { display: flex; align-items: flex-start; gap: var(--sp-50); font-size: var(--text-12); line-height: 18px; color: var(--fg-secondary-alpha); }
 .c2-opt img { width: 3px; height: 18px; flex-shrink: 0; }
+.c2-guide { margin: 0; font-size: var(--text-12); line-height: 1.5; color: var(--fg-benefit); }
 .c2-price { display: flex; align-items: center; gap: 5px; white-space: nowrap; font-size: var(--text-16); line-height: 1.4; }
 .c2-price .rate { font-weight: 700; color: var(--fg-sale); }
 .c2-price s { font-size: var(--text-14); line-height: 1.5; color: var(--fg-quaternary); }
@@ -1168,6 +1170,7 @@ img { display: block; }
         '<div class="c2-top"><div class="c2-left">' +
           '<div class="c2-info">' + ((TEST_BUILD ? isBest : m.bogo) ? '<span class="badge-gift">1+1</span>' : '') +
             '<div class="c2-name">' + m.name + '</div><div class="c2-opts">' + opts + '</div></div>' +
+          (TEST_BUILD && m.bogo && l.qty === 1 && !best ? '<p class="c2-guide">하나 더 담으면 1+1 할인 적용돼요.</p>' : '') +   // only while no 1+1 is applied in the cart
           '<div class="c2-price">' + (TEST_BUILD && isBest
             ? '<b class="rate">' + Math.floor(100 / l.qty) + '%</b><span>' + won(paid) + '</span><s>' + won(unit * l.qty) + '</s>'
             : won(paid)) + '</div>' +
