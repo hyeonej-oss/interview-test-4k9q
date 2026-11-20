@@ -1232,7 +1232,6 @@ img { display: block; }
     $('cartScroll').scrollTop = 0;
     $('cart2Scroll').scrollTop = 0;
     $('screen-cart').classList.add('open');
-    hideTip();
     syncScreens();
   }
   function closeCart() {
@@ -1320,9 +1319,7 @@ img { display: block; }
 
   function showTip() {
     if (state.detail.tipClosed) return;
-    $('tooltip').hidden = false;
-    clearTimeout(tipTimer);
-    tipTimer = setTimeout(hideTip, 4000);
+    $('tooltip').hidden = false;   // stays until the customer closes it or raises qty 1 → 2
   }
   function hideTip() { clearTimeout(tipTimer); $('tooltip').hidden = true; }
 
