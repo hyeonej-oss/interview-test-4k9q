@@ -424,7 +424,7 @@ img { display: block; }
 .c2-store .n img { width: 16px; height: 16px; }
 .c2-together { display: inline-flex; align-items: center; height: 26px; padding: 0 var(--sp-125); border: 1.2px solid var(--line-orange); border-radius: var(--radius-m); background: var(--sf-level-0); font-size: var(--text-12); font-weight: 700; line-height: 1.5; }
 .c2-item { display: flex; flex-direction: column; gap: var(--sp-100); padding: var(--sp-200); border-bottom: 1px solid var(--line-quaternary); }
-.c2-top { display: flex; align-items: flex-start; gap: var(--sp-125); }
+.c2-top { display: flex; align-items: flex-start; gap: var(--sp-125); cursor: pointer; }
 .c2-left { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-100); }
 .c2-info { display: flex; flex-direction: column; gap: 5px; width: 100%; }
 .c2-name { font-size: var(--text-16); font-weight: 700; line-height: 1.4; }
@@ -1167,7 +1167,7 @@ img { display: block; }
         ? '<button type="button" data-act="del" data-i="' + i + '" aria-label="' + m.name + ' 삭제"><img src="data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSImIzI0MDsmIzE1OTsmIzE2OTsmIzE4MTtkZWxldGUiPgo8cGF0aCBpZD0iZGVsZXRlIiBkPSJNNiAyLjU1QzYgMi4xMzU3OSA2LjMzNTc5IDEuOCA2Ljc1IDEuOEgxMS4yNUMxMS42NjQyIDEuOCAxMiAyLjEzNTc5IDEyIDIuNTVWNC4wNUgxNS4zNzVDMTUuNzg5MiA0LjA1IDE2LjEyNSA0LjM4NTc5IDE2LjEyNSA0LjhDMTYuMTI1IDUuMjE0MjIgMTUuNzg5MiA1LjU1IDE1LjM3NSA1LjU1SDE1LjAxMzRMMTQuMTU5NCAxNS41MTQxQzE0LjEyNjEgMTUuOTAyMSAxMy44MDE1IDE2LjIgMTMuNDEyMSAxNi4ySDQuNTg3ODRDNC4xOTg0NSAxNi4yIDMuODczODMgMTUuOTAyMSAzLjg0MDU4IDE1LjUxNDFMMi45ODY1MSA1LjU1SDIuNjI1QzIuMjEwNzkgNS41NSAxLjg3NSA1LjIxNDIyIDEuODc1IDQuOEMxLjg3NSA0LjM4NTc5IDIuMjEwNzkgNC4wNSAyLjYyNSA0LjA1SDZWMi41NVpNMTAuNSA0LjA1VjMuM0g3LjVWNC4wNUgxMC41Wk00LjQ5MjAyIDUuNTUwMDRMNS4yNzYzIDE0LjdIMTIuNzIzN0wxMy41MDc5IDUuNTUwMDRINC40OTIwMlpNNy41IDYuOTAwMDFDNy45MTQyMSA2LjkwMDAxIDguMjUgNy4yMzU3OSA4LjI1IDcuNjUwMDFWMTIuMTVDOC4yNSAxMi41NjQyIDcuOTE0MjEgMTIuOSA3LjUgMTIuOUM3LjA4NTc5IDEyLjkgNi43NSAxMi41NjQyIDYuNzUgMTIuMTVWNy42NTAwMUM2Ljc1IDcuMjM1NzkgNy4wODU3OSA2LjkwMDAxIDcuNSA2LjkwMDAxWk0xMC41IDYuOTAwMDFDMTAuOTE0MiA2LjkwMDAxIDExLjI1IDcuMjM1NzkgMTEuMjUgNy42NTAwMVYxMi4xNUMxMS4yNSAxMi41NjQyIDEwLjkxNDIgMTIuOSAxMC41IDEyLjlDMTAuMDg1OCAxMi45IDkuNzUgMTIuNTY0MiA5Ljc1IDEyLjE1VjcuNjUwMDFDOS43NSA3LjIzNTc5IDEwLjA4NTggNi45MDAwMSAxMC41IDYuOTAwMDFaIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzE4MUExQyIvPgo8L2c+Cjwvc3ZnPgo=" alt=""></button>'
         : '<button type="button" data-act="minus" data-i="' + i + '" aria-label="수량 빼기"><img src="data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSImIzI0MDsmIzE1OTsmIzE2OTsmIzE4MTttaW51cyI+CjxwYXRoIGlkPSJJY29uIiBkPSJNMi4yNSA5QzIuMjUgOC41ODU3OSAyLjU4NTc5IDguMjUgMyA4LjI1SDE1QzE1LjQxNDIgOC4yNSAxNS43NSA4LjU4NTc5IDE1Ljc1IDlDMTUuNzUgOS40MTQyMiAxNS40MTQyIDkuNzUgMTUgOS43NUgzQzIuNTg1NzkgOS43NSAyLjI1IDkuNDE0MjIgMi4yNSA5WiIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMxODFBMUMiLz4KPC9nPgo8L3N2Zz4K" alt=""></button>';
       return '<div class="c2-item">' +
-        '<div class="c2-top"><div class="c2-left">' +
+        '<div class="c2-top" data-act="detail" data-i="' + i + '"><div class="c2-left">' +
           '<div class="c2-info">' + ((TEST_BUILD ? isBest : m.bogo) ? '<span class="badge-gift">1+1</span>' : '') +
             '<div class="c2-name">' + m.name + '</div><div class="c2-opts">' + opts + '</div></div>' +
           (TEST_BUILD && m.bogo && l.qty === 1 && !best ? '<p class="c2-guide">하나 더 담으면 1+1 할인 적용돼요.</p>' : '') +   // only while no 1+1 is applied in the cart
@@ -1237,12 +1237,23 @@ img { display: block; }
     $('screen-cart').classList.add('open');
     syncScreens();
   }
+  function openDetailFromCart(menuId) {   // cart → menu detail; back or add returns to the cart
+    $('screen-cart').classList.remove('open');
+    openDetail(menuId);
+    state.detailFromCart = true;
+  }
+  function backToCart() {
+    $('screen-detail').classList.remove('open');
+    hideTip();
+    openCart();
+  }
   function closeCart() {
     $('screen-cart').classList.remove('open');
     syncScreens();
     if (device.dataset.screen === 'detail') updateDetail();
   }
   function openDetail(menuId) {
+    state.detailFromCart = false;
     const m = MENUS[menuId];
     state.detail = { menuId, qty: m.bogo ? DEFAULT_QTY : 1, size: defaultSize(menuId), sauces: new Set(), tipClosed: false };
     $('screen-detail').classList.toggle('no-img', !m.img);
@@ -1434,7 +1445,7 @@ img { display: block; }
   });
 
   
-  $('detailBack').addEventListener('click', goStore);
+  $('detailBack').addEventListener('click', () => (state.detailFromCart ? backToCart() : goStore()));
   $('qtyMinus').addEventListener('click', () => {
     const d = state.detail;
     if (d.qty <= 1) return;
@@ -1464,7 +1475,7 @@ img { display: block; }
   $('detailCta').addEventListener('click', () => {
     const d = state.detail;
     const line = { menuId: d.menuId, size: d.size, sauces: [...d.sauces], qty: d.qty };
-    const commit = () => { addLine(line); goStore(); showToast(); };
+    const commit = () => { addLine(line); if (state.detailFromCart) backToCart(); else goStore(); showToast(); };
     
     const ask = VARIANT === 'gift' ? cartHasBogo() : (d.qty > 2 || cartHasBogo());
     if (MENUS[d.menuId].bogo && ask) confirmThen(commit); else commit();
@@ -1493,6 +1504,7 @@ img { display: block; }
     const act = b.dataset.act, i = Number(b.dataset.i), line = state.cart[i];
     if (act === 'more') { goStore(); return; }
     if (act === 'store') { goStore(); $('storeScroll').scrollTop = 0; return; }
+    if (act === 'detail') { openDetailFromCart(line.menuId); return; }
     if (act === 'opt') { showToast(TEST_BUILD ? '준비 중인 화면이에요' : '옵션 변경은 이 프로토타입 범위 밖이에요'); return; }
     const prevBest = discountLine();
     if (act === 'del') state.cart.splice(i, 1);
