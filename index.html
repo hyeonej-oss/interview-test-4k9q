@@ -1331,7 +1331,7 @@ img { display: block; }
     const m = MENUS[id];
     const thumb = m.thumb
       ? '<div class="thumb"><img src="' + m.thumb + '" alt="">' +
-        '<button class="quick-add" type="button" data-quick="' + id + '" aria-label="' + m.name + ' 바로 담기"><img src="data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSImIzI0MDsmIzE1OTsmIzE2OTsmIzE4MTtwbHVzIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik05LjE2NjY2IDE2LjY2NjdDOS4xNjY2NiAxNy4xMjY5IDkuNTM5NzYgMTcuNSAxMCAxNy41QzEwLjQ2MDIgMTcuNSAxMC44MzMzIDE3LjEyNjkgMTAuODMzMyAxNi42NjY3VjEwLjgzMzNIMTYuNjY2N0MxNy4xMjY5IDEwLjgzMzMgMTcuNSAxMC40NjAyIDE3LjUgMTBDMTcuNSA5LjUzOTc2IDE3LjEyNjkgOS4xNjY2NyAxNi42NjY3IDkuMTY2NjdIMTAuODMzM1YzLjMzMzMzQzEwLjgzMzMgMi44NzMxIDEwLjQ2MDIgMi41IDEwIDIuNUM5LjUzOTc2IDIuNSA5LjE2NjY2IDIuODczMSA5LjE2NjY2IDMuMzMzMzNWOS4xNjY2N0gzLjMzMzMzQzIuODczMSA5LjE2NjY3IDIuNSA5LjUzOTc2IDIuNSAxMEMyLjUgMTAuNDYwMiAyLjg3MzEgMTAuODMzMyAzLjMzMzMzIDEwLjgzMzNIOS4xNjY2NlYxNi42NjY3WiIgZmlsbD0iIzE4MUExQyIvPgo8L2c+Cjwvc3ZnPgo=" alt=""></button></div>'
+        '<button class="quick-add" type="button" data-quick="' + id + '" aria-label="' + m.name + (m.bogo ? ' 옵션 선택' : ' 바로 담기') + '"><img src="data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSImIzI0MDsmIzE1OTsmIzE2OTsmIzE4MTtwbHVzIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik05LjE2NjY2IDE2LjY2NjdDOS4xNjY2NiAxNy4xMjY5IDkuNTM5NzYgMTcuNSAxMCAxNy41QzEwLjQ2MDIgMTcuNSAxMC44MzMzIDE3LjEyNjkgMTAuODMzMyAxNi42NjY3VjEwLjgzMzNIMTYuNjY2N0MxNy4xMjY5IDEwLjgzMzMgMTcuNSAxMC40NjAyIDE3LjUgMTBDMTcuNSA5LjUzOTc2IDE3LjEyNjkgOS4xNjY2NyAxNi42NjY3IDkuMTY2NjdIMTAuODMzM1YzLjMzMzMzQzEwLjgzMzMgMi44NzMxIDEwLjQ2MDIgMi41IDEwIDIuNUM5LjUzOTc2IDIuNSA5LjE2NjY2IDIuODczMSA5LjE2NjY2IDMuMzMzMzNWOS4xNjY2N0gzLjMzMzMzQzIuODczMSA5LjE2NjY3IDIuNSA5LjUzOTc2IDIuNSAxMEMyLjUgMTAuNDYwMiAyLjg3MzEgMTAuODMzMyAzLjMzMzMzIDEwLjgzMzNIOS4xNjY2NlYxNi42NjY3WiIgZmlsbD0iIzE4MUExQyIvPgo8L2c+Cjwvc3ZnPgo=" alt=""></button></div>'
       : '';
     return '<div class="menu-item" data-menu="' + id + '" role="button" tabindex="0" aria-label="' + m.name + ' 상세 보기">' +
       '<div class="info"><div class="head">' +
@@ -1392,9 +1392,10 @@ img { display: block; }
   document.querySelectorAll('[data-quick]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      if (MENUS[btn.dataset.quick].bogo) { openDetail(btn.dataset.quick); return; }
       const line = { menuId: btn.dataset.quick, size: defaultSize(btn.dataset.quick), sauces: [], qty: MENUS[btn.dataset.quick].bogo ? DEFAULT_QTY : 1 };
       const commit = () => { addLine(line); showToast(); };
-      if (cartHasBogo()) confirmThen(commit); else commit();
+      commit();  
     });
   });
 
